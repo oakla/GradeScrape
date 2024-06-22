@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+
+<div class="upload-container">
+    <h1>Upload your file</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input
+                type="file"
+                id="file"
+                name="file"
+                onchange="displayFilename()"
+        >
+        <label for="file">Choose a file</label><br>
+        <span class="file-name" id="file-name">
+            No file chosen
+        </span><br>
+        <input type="submit" value="Upload">
+    </form>
+</div>
+
+<script>
+    function displayFilename() {
+        let filenameDisplay = document.getElementById('file-name');
+        let fileInput = document.getElementById('file');
+        filenameDisplay.textContent = fileInput.files[0].name;
+    }
+
+</script>
+
+</body>
+{% endblock %}

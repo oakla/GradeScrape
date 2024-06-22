@@ -1,0 +1,16 @@
+[project]
+name = "transcriptr"
+version = "1.0.0"
+description = "Extract grades and unit data from your academic transcript."
+dependencies = [
+    "Jinja2",
+    "octk",
+    "pandas",
+    "flask",
+    "Werkzeug",
+    "PyPDF2",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"

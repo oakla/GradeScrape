@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <body>
+    <div>
+        <h1>File Uploaded Successfully</h1>
+        <div>
+            <ul>
+                <li>
+                    <a href="{{ url_for('download_file', file_name=file_name) }}">Download your extracted data.</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('upload_file') }}">Upload another file.</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </body>
+{% endblock %}
