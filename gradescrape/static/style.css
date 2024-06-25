@@ -8,12 +8,13 @@ body {
             height: 100vh;
         }
         .info-container {
-            background-color: #abb0c6;
+            background-color: #daddec;
             padding: 10px;
+            margin-bottom: 40px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: left;
-            width: 250px;
+            width: 350px;
         }
         .info-container h1 {
             font-size: medium;

@@ -2,16 +2,22 @@
 {% block content %}
     <body>
 
-
-
-    <div class="upload-container">
         <div class="info-container">
             <h1>What is this?</h1>
             <p>
-                Here you can upload your academic transcript as a pdf to have information of each unit you took extracted
-                into a table that can be read by a program like Excel.
+                Here you can upload your academic transcript as a pdf to have information of each unit
+                extracted into a file that can be read by a program like Excel.
+            </p>
+            <p>
+                At the moment, this tool only works with transcripts from the <em>University of Tasmania</em>. However, you can
+                try uploading a transcript from another institution and see if it works.
+            </p>
+            <p>
+                See the source code for this project <a href="https://github.com/oakla/GradeScrape/tree/master">here</a>.
             </p>
         </div>
+
+    <div class="upload-container">
         <h1>Upload your file</h1>
         <form method="post" enctype="multipart/form-data">
             <input
