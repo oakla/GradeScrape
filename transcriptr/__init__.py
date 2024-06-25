@@ -17,8 +17,16 @@ def ensure_dir_exists(directory):
         os.makedirs(directory, exist_ok=True)
 
 
-def create_app():
+def create_app(test_config=None ):
     app = Flask(__name__, instance_relative_config=True)
+
+    if test_config is None:
+        # load the instance config, if it exists, when not testing
+        app.config.from_pyfile("config.py", silent=True)
+    else:
+        # load the test config if passed in
+        app.config.update(test_config)
+
     app.config['UPLOAD_FOLDER'] = os.path.join(app.instance_path, UPLOAD_FOLDER)
     app.config['OUTPUT_FOLDER'] = os.path.join(app.instance_path, OUTPUT_FOLDER)
 
