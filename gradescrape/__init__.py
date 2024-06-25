@@ -3,7 +3,7 @@ import os
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 import octk
-from . import scrape_pdf
+from gradescrape import scrape_pdf
 import pandas as pd
 from pathlib import Path
 
