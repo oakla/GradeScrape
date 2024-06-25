@@ -3,7 +3,7 @@ requires = ["flit_core<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "transcriptr"
+name = "gradescrape"
 version = "1.0.0"
 description = "Extract grades and unit data from your academic transcript."
 dependencies = [
