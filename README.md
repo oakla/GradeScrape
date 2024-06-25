@@ -5,7 +5,7 @@ A script that will scrape your grades, from a pdf of your academic transcript, i
 ## Background
 When I was last studying at university, there were so many subjects I wanted to take but which didn't fit into the standard structure of my chosen degree (BSci). I got around this by starting several 'dummy degrees'. (Taking all these extra units is how I ended up with a BPhil, but that's another story.) 
 
-The point is, after graduation, when I wanted to know my 'real' GPA, I couldn't find it on my academic transcript. Instead, it listed a separate GPA for each degree I started, which only included the grades for the subjects I started that under that degree, even if those grades were eventually transferred to one of the degrees I actually completed.  
+The point is, after graduation, when I wanted to know my 'real' GPA, I couldn't find it on my academic transcript. Instead, it listed a separate GPA for each degree I started, which only included the grades for subjects I started under that degree, even if those grades were eventually transferred to one of the degrees I actually completed.  
 
 I wanted to know two things:
 1. My GPA for each degree (based on the units credited to that degree), and
