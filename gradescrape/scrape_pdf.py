@@ -1,6 +1,8 @@
 from PyPDF2 import PdfReader
 from collections import namedtuple
 import re
+import sys
+
 
 regex_patterns_to_remove = [
     r"This electronic transcript is a certified, authentic University of Tasmania document when viewed within \
@@ -89,18 +91,44 @@ def alternative_1_process_unit_line(line: str, degree, year: str, semester: str,
     return Unit(unit_code, unit_name, None, grade, None, degree, semester, year)
 
 
+def is_python_less_than_3_11():
+    return sys.version_info < (3, 11)
+
+
 def process_unit_line(line: str, degree, year: str, semester: str, ) -> Unit:
-    regex_patter = r"([A-Z]{2}) ((?>\d{2} )|)(.+) (\d+(?>\.\d)?) +([A-Z]{3}\d{3})"
+    """tbh, I probably should have extracted a bit of data WITHOUT regex to reduce the line a bit first.
     # grade, remainder = line.split(" ", 1)
     # mark, remainder = remainder.split(" ", 1)
-    match_obj = re.match(regex_patter, line)
+    """
+
+    if is_python_less_than_3_11():
+        regex_pattern = r"([A-Z]{2}) ((\d{2} )|)(.+) (\d+(\.\d)?) +([A-Z]{3}\d{3})"
+        re_group_map = {
+            "grade": 1,
+            "mark": 2,
+            "unit_name": 4,
+            "credit_points": 5,
+            "unit_code": 7,
+        }
+    else:
+        regex_pattern = r"([A-Z]{2}) ((?>\d{2} )|)(.+) (\d+(?>\.\d)?) +([A-Z]{3}\d{3})"
+        re_group_map = {
+            "grade": 1,
+            "mark": 2,
+            "unit_name": 3,
+            "credit_points": 4,
+            "unit_code": 5,
+        }
+        
+    # Modified to work with python 3.10 (above works with 3.11 and above). i.e. '?>' is not supported in 3.10
+    match_obj = re.match(regex_pattern, line)
     if not match_obj:
         return alternative_1_process_unit_line(line, degree, year, semester, )
-    grade = match_obj[1]
-    mark = match_obj[2].strip()
-    unit_name = match_obj[3].strip()
-    credit_points = match_obj[4].strip()
-    unit_code = match_obj[5].strip()
+    grade = match_obj[re_group_map["grade"]].strip()
+    mark = match_obj[re_group_map["mark"]].strip()
+    unit_name = match_obj[re_group_map["unit_name"]].strip()
+    credit_points = match_obj[re_group_map["credit_points"]].strip()
+    unit_code = match_obj[re_group_map["unit_code"]].strip()
     return Unit(unit_code, unit_name, mark, grade, credit_points, degree, semester, year)
 
 
