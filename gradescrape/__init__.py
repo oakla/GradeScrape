@@ -17,7 +17,7 @@ def ensure_dir_exists(directory):
         os.makedirs(directory, exist_ok=True)
 
 
-def create_app(test_config=None ):
+def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     if test_config is None:
@@ -86,6 +86,8 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+app = create_app()
 
 if __name__ == '__main__':
     create_app().run(debug=True, port=5012)
