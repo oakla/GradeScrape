@@ -1,3 +1,7 @@
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
+
 [project]
 name = "transcriptr"
 version = "1.0.0"
@@ -11,6 +15,5 @@ dependencies = [
     "PyPDF2",
 ]
 
-[build-system]
-requires = ["flit_core<4"]
-build-backend = "flit_core.buildapi"
+[project.urls]
+Home = "https://github.com/oakla/GradeScrape"
